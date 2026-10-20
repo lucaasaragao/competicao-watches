@@ -1,36 +1,43 @@
 # Competição de Relógios
 
 Votação simples entre 2 ou 3 relógios. O usuário entra com o CPF e vota uma única vez.
+Feito para rodar na **Vercel**: front estático em `public/` e funções serverless em `api/`.
 
-## Rodar
+## Estrutura
+
+```
+public/            front (HTML/CSS/JS puro)
+  img/             imagens dos relógios
+api/               funções da Vercel (uma por rota)
+lib/core.js        CPF, token e contagem
+lib/store.js       onde os votos ficam guardados
+data/watches.json  lista de relógios: edite aqui
+dev-server.js      servidor só para testar localmente
+```
+
+## Onde ficam os votos
+
+Num único JSON, `{ "<hash do cpf>": { watchId, at } }`:
+
+- **Na Vercel:** arquivo privado `votos.json` no **Vercel Blob**. Cada voto lê o arquivo, acrescenta o voto e grava só se ninguém alterou o arquivo no meio (ETag). Se houve conflito, tenta de novo. Assim votos simultâneos não se perdem.
+- **No computador:** `data/votes.json`.
+
+O CPF é validado pelos dígitos verificadores e nunca é guardado: só um hash irreversível (HMAC com `SECRET`).
+
+## Variáveis de ambiente na Vercel
+
+| Nome | O que é |
+|---|---|
+| `BLOB_READ_WRITE_TOKEN` | criada sozinha ao conectar um Blob Store ao projeto |
+| `SECRET` | frase longa e aleatória. **Não troque depois que a votação começar** (todo mundo poderia votar de novo) |
+
+## Rodar localmente
 
 ```bash
 npm install
-SECRET="uma-frase-secreta-longa" npm start
-# http://localhost:3000
+npm run dev   # http://localhost:3000
 ```
 
-## Como funciona
+## Zerar a votação
 
-- **Front:** HTML/CSS/JS puro em `public/` (login → escolha → resultado).
-- **Back:** Express em `server.js`.
-- **Relógios:** edite `data/watches.json` (id, nome, descrição, imagem). Imagens vão em `public/img/`.
-- **Votos:** gravados em `data/votes.json`, criado no primeiro voto. Para zerar a votação, apague esse arquivo e reinicie.
-- **CPF:** validado pelos dígitos verificadores e guardado só como hash (HMAC com o `SECRET`), nunca em texto. Um CPF = um voto.
-
-## API
-
-| Método | Rota | Uso |
-|---|---|---|
-| GET | `/api/watches` | lista os relógios |
-| POST | `/api/login` | `{ cpf }` → `{ token, votedFor }` |
-| GET | `/api/me` | quem está logado já votou? |
-| POST | `/api/vote` | `{ watchId }` com `Authorization: Bearer <token>` |
-| GET | `/api/results` | `{ total, counts }` |
-
-## Hospedagem
-
-O arquivo de votos precisa de disco persistente. Funciona em VPS, Render (com Disk) ou Railway (com Volume).
-Em Vercel/Netlify (serverless) o JSON é apagado a cada deploy/reinício.
-
-> Trocar o `SECRET` depois de começar a votação invalida o controle de quem já votou. Defina uma vez e mantenha.
+Apague o arquivo `votos.json` no Blob Store (Vercel → Storage), ou `data/votes.json` localmente.

@@ -1,14 +1,20 @@
 {
-  "name": "competicao-relogios",
+  "name": "competicao-watches",
   "version": "1.0.0",
   "description": "Votação de relógios com login por CPF",
   "scripts": {
-    "start": "node server.js"
+    "dev": "node dev-server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/blob": "^2.8.2"
+  },
+  "devDependencies": {
     "express": "^4.22.3"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
