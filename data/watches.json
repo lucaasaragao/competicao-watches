@@ -1,20 +1,14 @@
 [
   {
-    "id": "classico",
-    "name": "Clássico Social",
-    "description": "Caixa em aço polido, mostrador branco e pulseira de couro marrom.",
-    "image": "img/classico.svg"
+    "id": "casio-duro",
+    "name": "Casio Duro",
+    "description": "Mergulhador de quartzo com luneta giratória preta, números grandes e pulseira NATO de nylon. Resistente a 200 m.",
+    "image": "img/casio-duro.webp"
   },
   {
-    "id": "mergulhador",
-    "name": "Mergulhador Azul",
-    "description": "Luneta giratória, mostrador azul profundo e pulseira de aço.",
-    "image": "img/mergulhador.svg"
-  },
-  {
-    "id": "aviador",
-    "name": "Aviador Noturno",
-    "description": "Mostrador preto com números grandes e ponteiros luminosos.",
-    "image": "img/aviador.svg"
+    "id": "seiko-skx009",
+    "name": "Seiko SKX009",
+    "description": "Mergulhador automático com a clássica luneta \"Pepsi\" azul e vermelha, dia e data e pulseira Jubilee de aço. Resistente a 200 m.",
+    "image": "img/seiko-skx009.webp"
   }
 ]
