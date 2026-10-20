@@ -5,7 +5,7 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-for (const route of ["watches", "login", "me", "vote", "results"]) {
+for (const route of ["watches", "login", "me", "vote", "results", "reset"]) {
   app.all(`/api/${route}`, require(`./api/${route}`));
 }
 const PORT = process.env.PORT || 3000;

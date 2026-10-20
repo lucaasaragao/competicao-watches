@@ -17,7 +17,7 @@
   <main>
     <!-- Login -->
     <section id="screen-login" class="screen">
-      <p class="eyebrow">Votação aberta</p>
+      <p id="login-eyebrow" class="eyebrow">Votação aberta</p>
       <h1>Qual relógio merece vencer?</h1>
       <p class="lead">Entre com seu CPF para votar. Cada CPF vale um voto.</p>
       <form id="login-form" class="login" novalidate>
@@ -33,7 +33,9 @@
     <section id="screen-vote" class="screen" hidden>
       <p class="eyebrow">Escolha um</p>
       <h1>Toque no seu favorito</h1>
+      <p class="countdown" data-countdown hidden></p>
       <div id="cards" class="cards"></div>
+      <button class="link admin-reset" data-reset hidden>Resetar votação</button>
       <div class="confirm-bar">
         <button id="confirm" class="btn" disabled>Confirmar voto</button>
         <p id="vote-error" class="error" role="alert"></p>
@@ -42,10 +44,14 @@
 
     <!-- Resultado -->
     <section id="screen-done" class="screen" hidden>
-      <p class="eyebrow">Voto registrado</p>
+      <p id="done-eyebrow" class="eyebrow">Voto registrado</p>
       <h1 id="done-title">Obrigado!</h1>
+      <p class="countdown" data-countdown hidden></p>
+      <p id="winner" class="winner" hidden></p>
       <div id="results" class="results"></div>
       <p id="total" class="note"></p>
+      <p id="done-error" class="error" role="alert"></p>
+      <button class="link admin-reset" data-reset hidden>Resetar votação</button>
     </section>
   </main>
 

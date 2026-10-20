@@ -111,3 +111,22 @@ h1 { font-family: Fraunces, serif; font-weight: 500; font-size: clamp(30px, 6vw,
 .bar span { display: block; height: 100%; background: var(--muted); border-radius: 99px; transition: width .6s ease; }
 .row.mine .bar span { background: var(--accent); }
 .tag { display: block; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; margin-top: 2px; }
+
+/* Prazo e vencedor */
+.countdown {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 0 0 4px; padding: 6px 12px;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  background: var(--card); border: 1px solid var(--line); border-radius: 99px;
+}
+.countdown::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.countdown[hidden] { display: none; }
+.winner { font-family: Fraunces, serif; font-size: 20px; color: var(--accent); margin: 4px 0 0; }
+.row.winner-row { background: var(--card); border: 1.5px solid var(--accent); border-radius: 16px; padding: 12px 14px; }
+.row.winner-row .bar span { background: var(--accent); }
+.tag.win { font-weight: 700; }
+
+/* Reset do admin: discreto, no fim da tela */
+.admin-reset { display: block; margin: 40px 0 0; padding: 0; font-size: 13px; color: var(--error); opacity: .75; }
+.admin-reset[hidden] { display: none; }
+#screen-vote .admin-reset { margin-bottom: 20px; }
