@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Competição de Relógios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <span class="brand">Competição de Relógios</span>
+    <button id="logout" class="link" hidden>Sair</button>
+  </header>
+
+  <main>
+    <!-- Login -->
+    <section id="screen-login" class="screen">
+      <p class="eyebrow">Votação aberta</p>
+      <h1>Qual relógio merece vencer?</h1>
+      <p class="lead">Entre com seu CPF para votar. Cada CPF vale um voto.</p>
+      <form id="login-form" class="login" novalidate>
+        <label for="cpf">CPF</label>
+        <input id="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" />
+        <button type="submit" class="btn">Entrar</button>
+        <p id="login-error" class="error" role="alert"></p>
+      </form>
+      <p class="note">Seu CPF não é armazenado: guardamos só um código irreversível para impedir votos repetidos.</p>
+    </section>
+
+    <!-- Votação -->
+    <section id="screen-vote" class="screen" hidden>
+      <p class="eyebrow">Escolha um</p>
+      <h1>Toque no seu favorito</h1>
+      <div id="cards" class="cards"></div>
+      <div class="confirm-bar">
+        <button id="confirm" class="btn" disabled>Confirmar voto</button>
+        <p id="vote-error" class="error" role="alert"></p>
+      </div>
+    </section>
+
+    <!-- Resultado -->
+    <section id="screen-done" class="screen" hidden>
+      <p class="eyebrow">Voto registrado</p>
+      <h1 id="done-title">Obrigado!</h1>
+      <div id="results" class="results"></div>
+      <p id="total" class="note"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

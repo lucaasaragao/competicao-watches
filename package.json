@@ -1,0 +1,14 @@
+{
+  "name": "competicao-relogios",
+  "version": "1.0.0",
+  "description": "Votação de relógios com login por CPF",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}

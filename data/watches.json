@@ -1,0 +1,20 @@
+[
+  {
+    "id": "classico",
+    "name": "Clássico Social",
+    "description": "Caixa em aço polido, mostrador branco e pulseira de couro marrom.",
+    "image": "img/classico.svg"
+  },
+  {
+    "id": "mergulhador",
+    "name": "Mergulhador Azul",
+    "description": "Luneta giratória, mostrador azul profundo e pulseira de aço.",
+    "image": "img/mergulhador.svg"
+  },
+  {
+    "id": "aviador",
+    "name": "Aviador Noturno",
+    "description": "Mostrador preto com números grandes e ponteiros luminosos.",
+    "image": "img/aviador.svg"
+  }
+]

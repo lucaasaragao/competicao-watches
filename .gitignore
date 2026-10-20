@@ -1,0 +1,3 @@
+node_modules/
+data/votes.json
+data/*.tmp
