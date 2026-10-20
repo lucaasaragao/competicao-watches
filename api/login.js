@@ -6,6 +6,12 @@ module.exports = async (req, res) => {
   const cpf = cleanCpf(req.body?.cpf);
   if (!isValidCpf(cpf)) return res.status(400).json({ error: "CPF inválido." });
   const voterId = hashCpf(cpf);
-  const votes = await getVotes();
+  let votes;
+  try {
+    votes = await getVotes();
+  } catch (err) {
+    console.error(err);
+    return res.status(503).json({ error: err.message });
+  }
   res.status(200).json({ token: makeToken(voterId), votedFor: votes[voterId]?.watchId || null });
 };
